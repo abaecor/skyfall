@@ -5,7 +5,7 @@
  * @package skyfall
  * @author Satrya
  * @copyright Copyright (c) 2013, Satrya
- * @license	docs/license.txt
+ * @license docs/license.txt
  * @since 1.0
  */
 
