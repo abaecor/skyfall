@@ -13,4 +13,13 @@ $(document).ready(function(){
 		$(this).find( "ul:first" ).slideUp( "fast" );
 	});
 
+	// Slides
+	$('#slides').camera({
+		height: '400px',
+    	pagination: false,
+    	loader: 'bar',
+        navigation: true,
+        navigationHover: true
+    });
+
 });

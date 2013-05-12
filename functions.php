@@ -57,6 +57,10 @@ function skyfall_theme_setup() {
 		'hybrid-core-scripts', 
 		array( 'comment-reply' ) 
 	);
+	add_theme_support( 
+		'hybrid-core-theme-settings', 
+		array( 'footer', 'about' ) 
+	);
 
 	/* Add theme support for framework extensions. */
 	add_theme_support( 'loop-pagination' );
@@ -113,6 +117,9 @@ function skyfall_theme_setup() {
 	add_filter( "{$prefix}_sidebar_defaults", 'skyfall_sidebar_defaults' );
 	add_filter( 'cleaner_gallery_defaults', 'skyfall_gallery_defaults' );
 
+	/* Default footer settings */
+	add_filter( "{$prefix}_default_theme_settings", 'skyfall_default_footer_settings' );
+
 	/** 
 	 * Disqus issue.
 	 * URL: http://themehybrid.com/support/topic/weird-problem-wit-disqus-plugin 
@@ -130,6 +137,9 @@ function skyfall_theme_setup() {
  * @since 1.0
  */
 function skyfall_load_libraries() {
+
+	/* Loads the admin functions. */
+	require_once( trailingslashit( THEME_DIR ) . 'admin/admin.php' );
 
 	/* Loads additional functions file. */
 	require_once( trailingslashit( THEME_DIR ) . 'inc/theme-functions.php' );
@@ -168,7 +178,9 @@ function skyfall_embed_defaults( $args ) {
  */
 function skyfall_enqueue_scripts() {
 
-	wp_enqueue_style( 'skyfall-fonts', 'http://fonts.googleapis.com/css?family=Droid+Sans:400,700|Roboto+Condensed:400,700', '', '1.0', 'all' );
+	wp_enqueue_style( 'skyfall-fonts', 'http://fonts.googleapis.com/css?family=Droid+Sans:400,700|Roboto+Condensed:400,700', false, '1.0', 'all' );
+
+	wp_enqueue_style( 'skyfall-slides', trailingslashit( THEME_URI ) . 'css/camera.css', false, '1.0', 'all' );
 
 	wp_enqueue_script( 'jquery' );
 	
@@ -186,6 +198,7 @@ function skyfall_enqueue_scripts() {
 function skyfall_add_image_sizes() {
 	add_image_size( 'skyfall-small-thumb', 45, 45, true );
 	add_image_size( 'skyfall-attachment', 620, 400, true );
+	add_image_size( 'skyfall-slides', 940, 400, true );
 }
 
 /**
@@ -196,6 +209,7 @@ function skyfall_add_image_sizes() {
 function skyfall_custom_name_image_sizes( $sizes ) {
     $sizes['skyfall-small-thumb'] = __( 'Small Thumbnail', 'skyfall' );
     $sizes['skyfall-attachment'] = __( 'Attachment', 'skyfall' );
+    $sizes['skyfall-slides'] = __( 'Slides', 'skyfall' );
  
     return $sizes;
 }
@@ -299,5 +313,17 @@ function skyfall_gallery_defaults( $defaults ) {
 	$defaults['captiontag'] = 'figcaption';
 
 	return $defaults;
+}
+
+/**
+ * Default footer settings
+ *
+ * @since 1.0
+ */
+function skyfall_default_footer_settings( $settings ) {
+    
+    $settings['footer_insert'] = __( 'Copyright &#169; [the-year] [site-link]', 'skyfall' );
+    
+    return $settings;
 }
 ?>

@@ -1,0 +1,17 @@
+/*
+Description: Custom CSS for theme settings.
+Version: 1.0
+*/
+
+.hybrid-core-settings-wrap .inside span.description {
+    font-style: normal;
+    color: #999;
+}
+
+#hybrid-core-footer textarea {
+    max-height: 160px;
+}
+
+#wp-skyfall_theme_settings-footer_insert-editor-tools { 
+    display: none; 
+}

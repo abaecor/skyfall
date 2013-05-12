@@ -29,3 +29,13 @@ function skyfall_nav() {
 	get_template_part( 'menu', 'primary' );
 }
 add_action( 'skyfall_header_after', 'skyfall_nav', 1 );
+
+/**
+ * Sticky posts slides
+ *
+ * @since 1.0
+ */
+function skyfall_sticky_slides() {
+	get_template_part( 'content', 'slides' );
+}
+add_action( 'skyfall_content_before', 'skyfall_sticky_slides', 1 );
