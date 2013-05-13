@@ -25,12 +25,12 @@ function skyfall_site_title() {
 endif;
 
 /**
- * Sets the post excerpt length to 50 words.
+ * Sets the post excerpt length to 30 words.
  *
  * @since 1.0
  */
 function skyfall_excerpt_length( $length ) {
-	return 50;
+	return 30;
 }
 add_filter( 'excerpt_length', 'skyfall_excerpt_length' );
 
@@ -43,6 +43,19 @@ function skyfall_auto_excerpt_more( $more ) {
 	return ' &hellip;';
 }
 add_filter( 'excerpt_more', 'skyfall_auto_excerpt_more' );
+
+/**
+ * Filter the main loop
+ *
+ * @since 1.0
+ */
+function skyfall_filter_query( $query ) {
+	
+	if( $query->is_home() && hybrid_get_setting( 'skyfall_sticky' ) )
+		$query->set( 'post__not_in', get_option( 'sticky_posts' ) );
+	
+}
+add_action( 'pre_get_posts', 'skyfall_filter_query' );
 
 /**
  * Retrieves embedded audio from the post content.  This script only searches for embeds used by 

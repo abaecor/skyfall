@@ -162,13 +162,13 @@
 }
 
 .camera_caption {
-  bottom: 0;
+  bottom: 58px;
   display: block;
   position: absolute;
-  width: 100%;
+  width: 300px;
 }
 .camera_caption > div {
-  padding: 10px 20px;
+  padding: 20px;
 }
 
 .camerarelative {
@@ -299,13 +299,13 @@
   height: 40px;
   margin-top: -20px;
   position: absolute;
-  top: 50%;
+  bottom: 12px;
   width: 40px;
   z-index: 2;
 }
 
 .camera_prev {
-  left: 0;
+  left: 5px;
 }
 .camera_prev > span {
   background: url('../img/camera_skins.png') no-repeat 0 0;
@@ -315,7 +315,7 @@
 }
 
 .camera_next {
-  right: 0;
+  left: 46px;
 }
 .camera_next > span {
   background: url('../img/camera_skins.png') no-repeat -40px 0;
@@ -325,7 +325,7 @@
 }
 
 .camera_commands {
-  right: 41px;
+  left: 46px;
 }
 .camera_commands > .camera_play {
   background: url('../img/camera_skins.png') no-repeat -80px 0;
@@ -458,7 +458,7 @@
 }
 .camera_caption > div {
   background: #000;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.5);
 }
 
 .camera_wrap .camera_pag .camera_pag_ul li {
@@ -482,8 +482,8 @@
 }
 
 .camera_prevThumbs, .camera_nextThumbs, .camera_prev, .camera_next, .camera_commands, .camera_thumbs_cont {
-  background: #d8d8d8;
-  background: rgba(216, 216, 216, 0.85);
+  background: black;
+  background: rgba(0, 0, 0, 0.5);
 }
 
 .camera_wrap .camera_pag .camera_pag_ul li {

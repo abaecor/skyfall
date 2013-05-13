@@ -19,7 +19,8 @@ $(document).ready(function(){
     	pagination: false,
     	loader: 'bar',
         navigation: true,
-        navigationHover: true
+        navigationHover: true,
+        playPause: false
     });
 
 });

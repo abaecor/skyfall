@@ -36,6 +36,7 @@ add_action( 'skyfall_header_after', 'skyfall_nav', 1 );
  * @since 1.0
  */
 function skyfall_sticky_slides() {
-	get_template_part( 'content', 'slides' );
+	if ( is_home() && hybrid_get_setting( 'skyfall_sticky' ) )
+		get_template_part( 'content', 'slides' );
 }
 add_action( 'skyfall_content_before', 'skyfall_sticky_slides', 1 );

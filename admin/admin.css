@@ -8,7 +8,8 @@ Version: 1.0
     color: #999;
 }
 
-#hybrid-core-footer textarea {
+#hybrid-core-footer textarea,
+#skyfall-settngs-home-text textarea {
     max-height: 160px;
 }
 

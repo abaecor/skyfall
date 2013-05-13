@@ -40,6 +40,7 @@ See: http://codex.wordpress.org/Child_Themes
  * BLOG
  * PAGE_TEMPLATES
  *
+ * SLIDES
  * IE_HACKS
  */
 /*------------------------------------*\
@@ -1017,6 +1018,23 @@ object {
 /*------------------------------------*\
 	$PAGE_TEMPLATES
 \*------------------------------------*/
+/*------------------------------------*\
+	$SLIDES
+\*------------------------------------*/
+.camera_caption .entry-title {
+  font-size: 16px;
+  font-size: 1.33333rem;
+  line-height: 1.125;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+.camera_caption .entry-title a {
+  color: white;
+}
+.camera_caption p {
+  margin-bottom: 0;
+}
+
 /*------------------------------------*\
 	$IE_HACKS
 \*------------------------------------*/
