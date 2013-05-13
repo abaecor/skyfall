@@ -10,7 +10,7 @@
  * @package skyfall
  * @author Satrya
  * @copyright Copyright (c) 2013, Satrya
- * @license	docs/license.txt
+ * @license docs/license.txt
  * @since 1.0
  */
 ?>
@@ -30,13 +30,28 @@
 
 		<footer id="footer" class="site-footer" role="contentinfo">
 
-			<div class="container">
+			<?php 
+				// Action hook for placing content before the theme footer content
+				do_action( 'skyfall_footer_open' ); 
+			?>
 
-				<div class="footer-content">
-					<?php echo apply_atomic_shortcode( 'footer_content', '<p class="credit">' . __( 'Copyright &copy; [the-year] [site-link]. Powered by [wp-link] and [theme-link]', 'skyfall' ) . '</p>' ); ?>
-				</div><!-- .footer-content -->
+				<div class="container">
 
-			</div><!-- .container -->
+					<div class="footer-content">
+						<?php echo apply_atomic_shortcode( 'footer_content', '<p class="credit">' . __( 'Copyright &copy; [the-year] [site-link]. Powered by [wp-link] and [theme-link]', 'skyfall' ) . '</p>' ); ?>
+					</div><!-- .footer-content -->
+
+					<?php 
+						// Action hook for placing content inside the theme footer content
+						do_action( 'skyfall_footer' ); 
+					?>
+
+				</div><!-- .container -->
+
+			<?php 
+				// Action hook for placing content after the theme footer content
+				do_action( 'skyfall_footer_close' ); 
+			?>
 
 		</footer><!-- #footer -->
 

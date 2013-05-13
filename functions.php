@@ -81,10 +81,6 @@ function skyfall_theme_setup() {
 		'custom-background',
 		array( 'default-color' => 'ffffff' )
 	);
-	add_theme_support( 
-		'post-formats', 
-		array( 'aside', 'audio', 'image', 'gallery', 'link', 'quote', 'status', 'video' ) 
-	);
 
 	/* Embed width defaults. */
 	add_filter( 'embed_defaults', 'skyfall_embed_defaults' );
@@ -107,18 +103,18 @@ function skyfall_theme_setup() {
 	/* Filter size of the gravatar on comments. */
 	add_filter( "{$prefix}_list_comments_args", 'skyfall_comments_args' );
 
-	/* Remove theme-layouts meta box from custom post type */
+	/* Remove theme-layouts meta box from custom post type. */
 	add_action( 'init', 'skyfall_remove_theme_layout_metabox', 11 );
 
 	/* Register custom sidebar. */
 	add_action( 'widgets_init', 'skyfall_register_custom_sidebars' );
 
-	/* Hybrid Core 1.6 changes */
+	/* Hybrid Core 1.6 changes. */
 	add_filter( "{$prefix}_sidebar_defaults", 'skyfall_sidebar_defaults' );
 	add_filter( 'cleaner_gallery_defaults', 'skyfall_gallery_defaults' );
 
-	/* Default footer settings */
-	add_filter( "{$prefix}_default_theme_settings", 'skyfall_default_footer_settings' );
+	/* Default theme setting. */
+	add_filter( "{$prefix}_default_theme_settings", 'skyfall_default_setting' );
 
 	/** 
 	 * Disqus issue.
@@ -199,6 +195,7 @@ function skyfall_add_image_sizes() {
 	add_image_size( 'skyfall-small-thumb', 45, 45, true );
 	add_image_size( 'skyfall-attachment', 620, 400, true );
 	add_image_size( 'skyfall-slides', 940, 400, true );
+	add_image_size( 'skyfall-blog-thumbnail', 300, 180, true );
 }
 
 /**
@@ -210,6 +207,7 @@ function skyfall_custom_name_image_sizes( $sizes ) {
     $sizes['skyfall-small-thumb'] = __( 'Small Thumbnail', 'skyfall' );
     $sizes['skyfall-attachment'] = __( 'Attachment', 'skyfall' );
     $sizes['skyfall-slides'] = __( 'Slides', 'skyfall' );
+    $sizes['skyfall-blog-thumbnail'] = __( 'Blog Thumbnail', 'skyfall' );
  
     return $sizes;
 }
@@ -316,14 +314,18 @@ function skyfall_gallery_defaults( $defaults ) {
 }
 
 /**
- * Default footer settings
+ * Default theme setting
  *
  * @since 1.0
  */
-function skyfall_default_footer_settings( $settings ) {
-    
-    $settings['footer_insert'] = __( 'Copyright &#169; [the-year] [site-link]', 'skyfall' );
-    
+function skyfall_default_setting( $settings ) {
+
+	$settings = array(
+		'skyfall_sticky'	=> 1,
+		'skyfall_home_text'	=> __( 'Minimal and elegant WordPress theme with responsive layout. Optimized for mobile browsing. Free to download and use.', 'skyfall' ),
+		'footer_insert'		=> __( 'Copyright &#169; [the-year] [site-link]', 'skyfall' )
+	);
+
     return $settings;
 }
 ?>

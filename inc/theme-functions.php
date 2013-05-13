@@ -58,6 +58,21 @@ function skyfall_filter_query( $query ) {
 add_action( 'pre_get_posts', 'skyfall_filter_query' );
 
 /**
+ * Dynamic content classes
+ *
+ * @since 1.0
+ */
+function skyfall_content_class( $class = '' ) {
+
+	if ( is_home() )
+		$class = 'no-sidebar cl';
+	else
+		$class = 'has-sidebar';
+
+	echo $class;
+}
+
+/**
  * Retrieves embedded audio from the post content.  This script only searches for embeds used by 
  * the WordPress embed functionality.
  *

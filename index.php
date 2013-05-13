@@ -21,7 +21,7 @@ get_header();
  		do_action( 'skyfall_content_before' ); 
  	?>
  		
-	<div id="primary" class="site-content has-sidebar">
+	<div id="primary" class="site-content <?php skyfall_content_class(); ?>">
 		
 		<?php 
 			// Action hook for placing content before opening #content
@@ -77,8 +77,9 @@ get_header();
 		?>
 		
 		<?php 
-			// Loads the loop-nav.php template
-			get_template_part( 'loop', 'nav' ); 
+			if( ! is_home() )
+				// Loads the loop-nav.php template
+				get_template_part( 'loop', 'nav' ); 
 		?>
 		
 	</div><!-- #primary .site-content .has-sidebar -->

@@ -92,12 +92,11 @@ function skyfall_settings_general() { ?>
  */
 function skyfall_settings_home_text() {
 
-	/* Add a textarea using the wp_editor() function to make it easier on users to add custom content. */
 	wp_editor(
-		esc_textarea( hybrid_get_setting( 'skyfall_home_text' ) ),	// Editor content.
-		hybrid_settings_field_id( 'skyfall_home_text' ),		// Editor ID.
+		esc_textarea( hybrid_get_setting( 'skyfall_home_text' ) ),
+		hybrid_settings_field_id( 'skyfall_home_text' ),
 		array(
-			'tinymce' => 		false, // Don't use TinyMCE in a meta box.
+			'tinymce' => 		false,
 			'textarea_name' => 	hybrid_settings_field_name( 'skyfall_home_text' ),
 			'media_buttons' =>	false
 		)
@@ -133,10 +132,7 @@ function skyfall_theme_validate_settings( $input ) {
  * @since 1.0
  */
 function skyfall_admin_scripts( $hook_suffix ) {
-
 	/* Enqueue Styles */
 	wp_enqueue_style( 'skyfall-theme-settings-style', trailingslashit ( THEME_URI ) . 'admin/admin.css', false, 1.0, 'screen' );
-
 }
-
 ?>
