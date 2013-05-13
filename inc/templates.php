@@ -48,7 +48,7 @@ add_action( 'skyfall_content_before', 'skyfall_sticky_slides', 1 );
  */
 function skyfall_display_home_text() {
 	if ( is_home() && hybrid_get_setting( 'skyfall_home_text' ) )
-		echo '<section class="home-text"><p class="aligncenter">' . stripslashes( hybrid_get_setting( 'skyfall_home_text' ) ) . '</p></section>';
+		echo '<section class="home-text"><p class="aligncenter">' . stripslashes( do_shortcode( hybrid_get_setting( 'skyfall_home_text' ) ) ) . '</p></section>';
 }
 add_action( 'skyfall_content_before', 'skyfall_display_home_text', 2 );
 
