@@ -8,7 +8,7 @@
  * @package skyfall
  * @author Satrya
  * @copyright Copyright (c) 2013, Satrya
- * @license	docs/license.txt
+ * @license docs/license.txt
  * @since 1.0
  */
 
@@ -19,7 +19,7 @@ if ( is_active_sidebar( 'subsidiary' ) ) : // Check, if subsidiary sidebar at le
 		do_action( 'skyfall_sidebar_subsidiary_before' ); 
 	?>
 
-	<aside id="sidebar-subsidiary" class="sidebar sidebar-subsidiary" role="complementary">
+	<aside id="sidebar-subsidiary" class="sidebar sidebar-subsidiary">
 
 		<?php 
 			// Action hook for placing content before subsidiary sidebar
@@ -40,7 +40,7 @@ if ( is_active_sidebar( 'subsidiary' ) ) : // Check, if subsidiary sidebar at le
 			do_action( 'skyfall_sidebar_subsidiary_close' ); 
 		?>
 
-	</aside><!-- #sidebar-subsidiary .aside -->
+	</aside><!-- #sidebar-subsidiary .sidebar -->
 
 	<?php 
 		// Action hook for placing content after closing #sidebar-subsidiary

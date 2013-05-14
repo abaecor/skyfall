@@ -36,29 +36,53 @@ do_action( 'skyfall_entry_before' );
 				do_action( 'skyfall_entry_open' ); 
 			?>
 
-			<header class="entry-header">
-				<?php echo apply_atomic_shortcode( 'entry_title', '[entry-title]' ); // Post title ?>
-			</header><!-- .entry-header -->
+			<figure class="hmedia">
+				<?php
+					$image = get_the_image( array( 'meta_key' => 'Thumbnail', 'size' => 'full', 'format' => 'array' ) ); 
 
-			<div class="entry-container">
+					$layout = theme_layouts_get_layout();
+					$size = '';
+					if( 'layout-1c-full' == $layout )
+						$size = 'skyfall-blog-full';
+					else
+						$size = 'skyfall-blog';
+				?>
+				<a href="<?php echo $image['src']; ?>" class="overlay" rel="prettyPhoto">
+					<?php if ( current_theme_supports( 'get-the-image' ) ) get_the_image( array( 'meta_key' => 'Thumbnail', 'size' => $size, 'image_class' => 'photo', 'link_to_post' => false ) ); ?>
+				</a>
+			</figure>
 
-				<?php if ( is_singular( get_post_type() ) ) { ?>
+			<div class="entry">
 
-					<div class="entry-content">
-						<?php the_content(); ?>
-						<?php wp_link_pages( array( 'before' => '<p class="page-links">' . __( 'Pages:', 'skyfall' ), 'after' => '</p>' ) ); ?>
-					</div><!-- .entry-content -->
+				<header class="entry-header">
+					<?php echo apply_atomic_shortcode( 'entry_title', '[entry-title]' ); // Post title ?>
+				</header><!-- .entry-header -->
 
-				<?php } else { ?>
+				<div class="entry-container">
 
-					<div class="entry-summary">
-						<?php the_excerpt(); ?>
-						<?php wp_link_pages( array( 'before' => '<p class="page-links">' . __( 'Pages:', 'skyfall' ), 'after' => '</p>' ) ); ?>
-					</div><!-- .entry-summary -->
+					<?php if ( is_singular( get_post_type() ) ) { ?>
 
-				<?php } ?>
+						<div class="entry-content">
+							<?php the_content(); ?>
+							<?php wp_link_pages( array( 'before' => '<p class="page-links">' . __( 'Pages:', 'skyfall' ), 'after' => '</p>' ) ); ?>
+						</div><!-- .entry-content -->
 
-			</div><!-- .entry-wrap -->
+					<?php } else { ?>
+
+						<div class="entry-summary">
+							<?php the_excerpt(); ?>
+							<?php wp_link_pages( array( 'before' => '<p class="page-links">' . __( 'Pages:', 'skyfall' ), 'after' => '</p>' ) ); ?>
+						</div><!-- .entry-summary -->
+
+					<?php } ?>
+
+				</div><!-- .entry-container -->
+
+				<?php 
+					echo apply_atomic_shortcode( 'entry_meta', '<div class="entry-meta">' . __( '[entry-published] &middot; [entry-author] &middot; [entry-terms taxonomy="category" before="Posted in "] &middot; [entry-terms before="Tagged "]', 'skyfall' ) . '</div><!-- .entry-meta -->' ); 
+				?>
+			
+			</div><!-- .entry -->
 
 			<?php 
 				// Action hook for placing content before closing post content

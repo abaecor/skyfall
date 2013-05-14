@@ -19,7 +19,7 @@ if( ! empty( $sticky ) ) :
 
 	if ( $loop->have_posts() ) : ?>
 
-		<div class="camera_wrap camera_white_skin" id="slides">
+		<section class="camera_wrap camera_white_skin" id="slides">
 
 			<?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
 					
@@ -37,7 +37,7 @@ if( ! empty( $sticky ) ) :
 
 			<?php endwhile; ?>
 			
-		</div>
+		</section><!-- .camera_wrap -->
 
 	<?php endif; wp_reset_postdata(); ?>
 

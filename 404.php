@@ -44,23 +44,27 @@ get_header();
 					do_action( 'skyfall_entry_open' ); 
 				?>
 
-				<header class="entry-header">
-					<h1 class="entry-title"><?php esc_html_e( 'Oops! That page can\'t be found.', 'skyfall' ); ?></h1>
-				</header>
+				<div class="entry">
 
-				<div class="entry-wrap">
+					<header class="entry-header">
+						<h1 class="entry-title"><?php esc_html_e( 'Oops! That page can\'t be found.', 'skyfall' ); ?></h1>
+					</header>
 
-					<div class="entry-content-404">
-						
-						<p><?php _e( 'The following is a list of the latest posts from the blog. Maybe it will help you find what you\'re looking for.', 'skyfall' ); ?></p>
+					<div class="entry-container">
 
-						<ul>
-							<?php wp_get_archives( array( 'limit' => 10, 'type' => 'postbypost' ) ); ?>
-						</ul>
+						<div class="entry-content-404">
+							
+							<p><?php _e( 'The following is a list of the latest posts from the blog. Maybe it will help you find what you\'re looking for.', 'skyfall' ); ?></p>
 
-					</div><!-- .entry-content-404 -->
+							<ul>
+								<?php wp_get_archives( array( 'limit' => 10, 'type' => 'postbypost' ) ); ?>
+							</ul>
 
-				</div><!-- .entry-wrap -->
+						</div><!-- .entry-content-404 -->
+
+					</div><!-- .entry-container -->
+
+				</div><!-- .entry -->
 
 				<?php 
 					// Action hook for placing content before closing post content

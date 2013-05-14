@@ -64,7 +64,7 @@ add_action( 'pre_get_posts', 'skyfall_filter_query' );
  */
 function skyfall_content_class( $class = '' ) {
 
-	if ( is_home() )
+	if ( is_home() || 'layout-1c' == theme_layouts_get_layout() || 'layout-1c-full' == theme_layouts_get_layout() )
 		$class = 'no-sidebar cl';
 	else
 		$class = 'has-sidebar';

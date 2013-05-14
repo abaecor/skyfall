@@ -23,4 +23,10 @@ $(document).ready(function(){
         playPause: false
     });
 
+    // prettyPhoto
+    $("a[rel^='prettyPhoto']").prettyPhoto({
+    	theme: 'dark_square',
+    	social_tools: false
+    });
+
 });

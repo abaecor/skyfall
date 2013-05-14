@@ -85,6 +85,10 @@ function skyfall_theme_setup() {
 	/* Embed width defaults. */
 	add_filter( 'embed_defaults', 'skyfall_embed_defaults' );
 
+	/* Filter the sidebar widgets. */
+	add_filter( 'sidebars_widgets', 'skyfall_disable_sidebars' );
+	add_action( 'template_redirect', 'skyfall_one_column' );
+
 	/* Enqueue styles & scripts. */
 	add_action( 'wp_enqueue_scripts', 'skyfall_enqueue_scripts' );
 
@@ -112,6 +116,9 @@ function skyfall_theme_setup() {
 	/* Hybrid Core 1.6 changes. */
 	add_filter( "{$prefix}_sidebar_defaults", 'skyfall_sidebar_defaults' );
 	add_filter( 'cleaner_gallery_defaults', 'skyfall_gallery_defaults' );
+
+	/* Add no widgets layout. */
+	add_filter( 'theme_layouts_strings', 'skyfall_register_theme_layout' );
 
 	/* Default theme setting. */
 	add_filter( "{$prefix}_default_theme_settings", 'skyfall_default_setting' );
@@ -168,6 +175,42 @@ function skyfall_embed_defaults( $args ) {
 }
 
 /**
+ * Function for deciding which pages should have a one-column layout.
+ *
+ * @since 1.0
+ */
+function skyfall_one_column() {
+	if ( ! is_active_sidebar( 'primary' ) )
+		add_filter( 'theme_mod_theme_layout', 'skyfall_theme_layout_one_column' );
+}
+
+/**
+ * Filters 'get_theme_layout' by returning 'layout-1c'.
+ *
+ * @since 1.0
+ */
+function skyfall_theme_layout_one_column( $layout ) {
+	return '1c';
+}
+
+/**
+ * Disables sidebars if viewing a one-column page.
+ *
+ * @since 1.0
+ */
+function skyfall_disable_sidebars( $sidebars_widgets ) {
+
+	if ( current_theme_supports( 'theme-layouts' ) && ! is_admin() ) {
+
+		if ( 'layout-1c' == theme_layouts_get_layout() ) {
+			$sidebars_widgets['primary'] = false;
+		}
+	}
+
+	return $sidebars_widgets;
+}
+
+/**
  * Enqueue styles & scripts
  *
  * @since 1.0
@@ -177,6 +220,8 @@ function skyfall_enqueue_scripts() {
 	wp_enqueue_style( 'skyfall-fonts', 'http://fonts.googleapis.com/css?family=Droid+Sans:400,700|Roboto+Condensed:400,700', false, '1.0', 'all' );
 
 	wp_enqueue_style( 'skyfall-slides', trailingslashit( THEME_URI ) . 'css/camera.css', false, '1.0', 'all' );
+
+	wp_enqueue_style( 'skyfall-prettyphoto', trailingslashit( THEME_URI ) . 'css/prettyphoto.css', false, '1.0', 'all' );
 
 	wp_enqueue_script( 'jquery' );
 	
@@ -196,6 +241,8 @@ function skyfall_add_image_sizes() {
 	add_image_size( 'skyfall-attachment', 620, 400, true );
 	add_image_size( 'skyfall-slides', 940, 400, true );
 	add_image_size( 'skyfall-blog-thumbnail', 300, 180, true );
+	add_image_size( 'skyfall-blog', 620, 300, true );
+	add_image_size( 'skyfall-blog-full', 940, 300, true );
 }
 
 /**
@@ -208,6 +255,8 @@ function skyfall_custom_name_image_sizes( $sizes ) {
     $sizes['skyfall-attachment'] = __( 'Attachment', 'skyfall' );
     $sizes['skyfall-slides'] = __( 'Slides', 'skyfall' );
     $sizes['skyfall-blog-thumbnail'] = __( 'Blog Thumbnail', 'skyfall' );
+    $sizes['skyfall-blog'] = __( 'Blog', 'skyfall' );
+    $sizes['skyfall-blog-full'] = __( 'Full Width Blog', 'skyfall' );
  
     return $sizes;
 }
@@ -311,6 +360,16 @@ function skyfall_gallery_defaults( $defaults ) {
 	$defaults['captiontag'] = 'figcaption';
 
 	return $defaults;
+}
+
+/**
+ * Add no widgets layout.
+ *
+ * @since 1.0
+ */
+function skyfall_register_theme_layout( $strings ) {
+	$strings['1c-full'] = __( 'Full Width', 'skyfall' );
+	return $strings;
 }
 
 /**

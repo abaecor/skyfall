@@ -14,6 +14,11 @@
  * @since 1.0
  */
 ?>
+			<?php 
+				// Action hook for placing content inside #main
+				do_action( 'skyfall_main' ); 
+			?>
+
 			</div><!-- .container -->
 
 			<?php 
