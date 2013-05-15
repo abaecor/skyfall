@@ -18,7 +18,7 @@ get_header();
  		do_action( 'skyfall_content_before' ); 
  	?>
  		
-	<div id="primary" class="site-content has-sidebar">
+	<div id="primary" class="site-content <?php skyfall_content_class(); ?>">
 		
 		<?php 
 			// Action hook for placing content before opening #content
@@ -43,32 +43,36 @@ get_header();
 								do_action( 'skyfall_entry_open' ); 
 							?>
 
-							<div class="attachment-item">
+							<div class="entry">
 
-								<?php echo apply_atomic_shortcode( 'entry_title', the_title( '<h1 class="attachment-title entry-title">', '</h1>', false ) );  ?>
+								<div class="attachment-item">
 
-								<?php if ( has_excerpt() ) {
-									$src = wp_get_attachment_image_src( get_the_ID(), 'skyfall-attachment' );
-									echo do_shortcode( sprintf( '[caption align="aligncenter" width="%1$s"]%3$s %2$s[/caption]', esc_attr( $src[1] ), get_the_excerpt(), wp_get_attachment_image( get_the_ID(), 'skyfall-attachment', false ) ) );
-								} else {
-									echo wp_get_attachment_image( get_the_ID(), 'skyfall-attachment', false, array( 'class' => 'aligncenter' ) );
-								} ?>
-							</div><!-- .attachment-item -->
+									<?php echo apply_atomic_shortcode( 'entry_title', the_title( '<h1 class="attachment-title entry-title">', '</h1>', false ) );  ?>
 
-							<?php $content = get_the_content(); if( ! empty( $content ) ) { ?>
+									<?php if ( has_excerpt() ) {
+										$src = wp_get_attachment_image_src( get_the_ID(), 'skyfall-attachment' );
+										echo do_shortcode( sprintf( '[caption align="aligncenter" width="%1$s"]%3$s %2$s[/caption]', esc_attr( $src[1] ), get_the_excerpt(), wp_get_attachment_image( get_the_ID(), 'skyfall-attachment', false ) ) );
+									} else {
+										echo wp_get_attachment_image( get_the_ID(), 'skyfall-attachment', false, array( 'class' => 'aligncenter' ) );
+									} ?>
+								</div><!-- .attachment-item -->
 
-								<div class="entry-wrap">
+								<?php $content = get_the_content(); if( ! empty( $content ) ) { ?>
 
-									<div class="entry-content">
+									<div class="entry-wrap">
 
-										<?php the_content(); ?>
-										<?php wp_link_pages( array( 'before' => '<p class="page-links">' . __( 'Pages:', 'skyfall' ), 'after' => '</p>' ) ); ?>
+										<div class="entry-content">
 
-									</div><!-- .entry-content -->
+											<?php the_content(); ?>
+											<?php wp_link_pages( array( 'before' => '<p class="page-links">' . __( 'Pages:', 'skyfall' ), 'after' => '</p>' ) ); ?>
 
-								</div><!-- .entry-wrap -->
+										</div><!-- .entry-content -->
 
-							<?php } ?>
+									</div><!-- .entry-wrap -->
+
+								<?php } ?>
+
+							</div>
 
 							<?php 
 								// Action hook for placing content before closing post content
@@ -110,7 +114,7 @@ get_header();
 			do_action( 'skyfall_content_close' ); 
 		?>
 		
-	</div><!-- #primary .site-content .has-sidebar -->
+	</div><!-- #primary .site-content -->
  		
  	<?php 
  		// Action hook for placing content after closing #primary

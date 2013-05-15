@@ -1,16 +1,14 @@
 /*
 Theme Name:	SkyFall
 Theme URI: 
-Description: 
+Description: Beautiful in minimalistic design. Perfect for personal blog or even photographers to showcase their portfolio.
 Version: 1.0
 Author: Satrya
 Author URI: http://satrya.me
-Tags: white
+Tags: light, two-columns, fixed-width, custom-background, featured-images, microformats, threaded-comments, translation-ready
 
 License: GNU General Public License
 License URI: license.txt
-
-Support URI: http://tokokoo.com/ticketing
 
 SkyFall WordPress Theme, Copyright 2013 satrya.me
 SkyFall is distributed under the terms of the GNU GPL
@@ -829,6 +827,7 @@ figure > img {
 
 img {
   height: auto;
+  max-width: 100%;
 }
 
 .entry-content img,
@@ -852,7 +851,7 @@ img[class*="attachment-"] {
 
 .wp-caption {
   background: black;
-  margin-bottom: 10px 0 20px;
+  margin-bottom: 20px;
   max-width: 100%;
   padding: 15px 10px 10px;
   -webkit-transition: all 0.15s ease-in-out;
@@ -1301,10 +1300,19 @@ object {
 
 .entry {
   padding: 20px;
+  *zoom: 1;
+}
+.entry:before, .entry:after {
+  content: "";
+  display: table;
+}
+.entry:after {
+  clear: both;
 }
 
 .entry-title {
   font-weight: 400;
+  line-height: 1em;
 }
 .entry-title a {
   color: #333333;
@@ -1371,6 +1379,10 @@ object {
   background: #3498db;
   border: 1px solid #258cd1;
   color: white;
+}
+
+.page-links {
+  clear: both;
 }
 
 /*------------------------------------*\

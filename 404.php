@@ -23,7 +23,7 @@ get_header();
  		do_action( 'skyfall_content_before' ); 
  	?>
 
-	<div id="primary" class="site-content has-sidebar">
+	<div id="primary" class="site-content <?php skyfall_content_class(); ?>">
 
 		<?php 
 			// Action hook for placing content before opening #content

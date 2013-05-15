@@ -35,7 +35,7 @@ function skyfall_theme_setup() {
 	$prefix = hybrid_get_prefix();
 
 	/* Set content width. */
-	hybrid_set_content_width( 620 );
+	hybrid_set_content_width( 580 );
 
 	/* Add theme support for core framework features. */
 	add_theme_support( 'hybrid-core-shortcodes' );
@@ -43,7 +43,7 @@ function skyfall_theme_setup() {
 	add_theme_support( 'hybrid-core-widgets' );
 	add_theme_support( 
 		'hybrid-core-menus', 
-		array( 'primary', 'subsidiary' ) 
+		array( 'primary' ) 
 	);
 	add_theme_support( 
 		'hybrid-core-sidebars', 
@@ -169,14 +169,14 @@ function skyfall_load_libraries() {
  */
 function skyfall_embed_defaults( $args ) {
 
-	$args['width'] = 620;
+	$args['width'] = 580;
 
 	if ( current_theme_supports( 'theme-layouts' ) ) {
 
 		$layout = theme_layouts_get_layout();
 
 		if ( 'layout-1c-full' == $layout )
-			$args['width'] = 940;
+			$args['width'] = 900;
 
 	}
 
@@ -189,17 +189,17 @@ function skyfall_embed_defaults( $args ) {
  * @since 1.0
  */
 function skyfall_one_column() {
-	if ( ! is_active_sidebar( 'primary' ) )
-		add_filter( 'theme_mod_theme_layout', 'skyfall_theme_layout_one_column' );
+	if ( is_home() )
+		add_filter( 'theme_mod_theme_layout', 'skyfall_theme_layout_full' );
 }
 
 /**
- * Filters 'get_theme_layout' by returning 'layout-1c'.
+ * Filters 'get_theme_layout' by returning 'layout-1c-full'.
  *
  * @since 1.0
  */
-function skyfall_theme_layout_one_column( $layout ) {
-	return '1c';
+function skyfall_theme_layout_full( $layout ) {
+	return '1c-full';
 }
 
 /**
@@ -211,7 +211,7 @@ function skyfall_disable_sidebars( $sidebars_widgets ) {
 
 	if ( current_theme_supports( 'theme-layouts' ) && ! is_admin() ) {
 
-		if ( 'layout-1c' == theme_layouts_get_layout() ) {
+		if ( 'layout-1c' == theme_layouts_get_layout() || 'layout-1c-full' == theme_layouts_get_layout() ) {
 			$sidebars_widgets['primary'] = false;
 		}
 	}
@@ -247,7 +247,7 @@ function skyfall_enqueue_scripts() {
  */
 function skyfall_add_image_sizes() {
 	add_image_size( 'skyfall-small-thumb', 45, 45, true );
-	add_image_size( 'skyfall-attachment', 620, 400, true );
+	add_image_size( 'skyfall-attachment', 580, 400, true );
 	add_image_size( 'skyfall-slides', 940, 400, true );
 	add_image_size( 'skyfall-blog-thumbnail', 300, 180, true );
 	add_image_size( 'skyfall-blog', 620, 300, true );
@@ -390,8 +390,8 @@ function skyfall_default_setting( $settings ) {
 
 	$settings = array(
 		'skyfall_sticky'	=> 1,
-		'skyfall_home_text'	=> __( 'Minimal and elegant WordPress theme with responsive layout. Optimized for mobile browsing. Free to download and use.', 'skyfall' ),
-		'footer_insert'		=> __( 'Copyright &#169; [the-year] [site-link]', 'skyfall' )
+		'skyfall_home_text'	=> __( 'Beautiful in minimalistic design. Perfect for personal blog or even photographers to showcase their portfolio.', 'skyfall' ),
+		'footer_insert'		=> __( 'Copyright &copy; [the-year] [site-link]. Powered by [wp-link] and [theme-link]', 'skyfall' )
 	);
 
     return $settings;

@@ -43,7 +43,7 @@
 				<div class="container">
 
 					<div class="footer-content">
-						<?php echo apply_atomic_shortcode( 'footer_content', '<p class="credit">' . __( 'Copyright &copy; [the-year] [site-link]. Powered by [wp-link] and [theme-link]', 'skyfall' ) . '</p>' ); ?>
+						<p class="credit"><?php hybrid_footer_content(); ?></p>
 					</div><!-- .footer-content -->
 
 					<?php 
