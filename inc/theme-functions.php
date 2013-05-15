@@ -18,8 +18,16 @@
 if ( ! function_exists( 'skyfall_site_title' ) ):
 function skyfall_site_title() {
 
-	hybrid_site_title();
-	hybrid_site_description();
+	if ( get_header_image() ) {
+		echo '<div id="site-title">' . "\n";
+			echo '<a href="' . get_home_url() . '" title="' . get_bloginfo( 'name' ) . '" rel="home">' . "\n";
+				echo '<img class="logo" src="' . get_header_image() . '" alt="' . get_bloginfo( 'name' ) . '" />' . "\n";
+			echo '</a>' . "\n";
+		echo '</div>' . "\n";
+	} else {
+		hybrid_site_title();
+		hybrid_site_description();
+	}
 
 }
 endif;
@@ -69,7 +77,7 @@ function skyfall_content_class( $class = '' ) {
 	else
 		$class = 'has-sidebar';
 
-	echo $class;
+	echo apply_filters( 'skyfall_custom_content_class', $class );
 }
 
 /**

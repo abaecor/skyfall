@@ -75,12 +75,21 @@ function skyfall_theme_setup() {
 	);
 
 	/* Add theme support for WordPress features. */
-	// add_editor_style();
 	add_theme_support( 'automatic-feed-links' );
 	add_theme_support( 
 		'custom-background',
 		array( 'default-color' => 'ffffff' )
 	);
+	/* Add support for custom headers. */
+	$defaults = array(
+		'width'         => 235,
+		'height'        => 70,
+		'flex-height'   => true,
+		'flex-width'    => true,		
+		'header-text'   => false,
+		'uploads'       => true,
+	);
+	add_theme_support( 'custom-header', apply_filters( 'skyfall_header_args_defaults', $defaults ) );
 
 	/* Embed width defaults. */
 	add_filter( 'embed_defaults', 'skyfall_embed_defaults' );

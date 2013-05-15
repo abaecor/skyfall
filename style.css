@@ -928,6 +928,7 @@ object {
   font-size: 3.33333rem;
   font-family: 'Roboto Condensed', sans-serif;
   font-weight: 400;
+  margin-bottom: 0;
   line-height: 1;
   text-transform: uppercase;
 }
@@ -1293,7 +1294,8 @@ object {
   font-size: 1.08333rem;
   line-height: 1.38462em;
 }
-.singular .hentry {
+
+.hentry {
   margin-bottom: 18px;
 }
 
@@ -1341,6 +1343,34 @@ object {
   display: inline;
   float: right;
   text-align: right;
+}
+
+/* 	Pagination
+	----------------- */
+.pagination {
+  margin-bottom: 18px;
+  overflow: hidden;
+  padding: 12px 5px;
+}
+.pagination .page-numbers {
+  background: #eeeeee;
+  border: 1px solid #dddddd;
+  -webkit-border-radius: 13px;
+  -moz-border-radius: 13px;
+  border-radius: 13px;
+  color: #555555;
+  font-weight: 700;
+  padding: 5px 9px;
+  -webkit-transition: all 0.15s ease-in;
+  -webkit-transition-delay: 0s;
+  -moz-transition: all 0.15s ease-in 0s;
+  -o-transition: all 0.15s ease-in 0s;
+  transition: all 0.15s ease-in 0s;
+}
+.pagination .page-numbers:hover {
+  background: #3498db;
+  border: 1px solid #258cd1;
+  color: white;
 }
 
 /*------------------------------------*\

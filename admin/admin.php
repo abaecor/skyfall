@@ -79,6 +79,24 @@ function skyfall_settings_general() { ?>
 			</td>
 		</tr>
 
+		<!-- Favicon upload -->
+		<tr class="favicon">
+			<th>
+				<label for="<?php echo esc_attr( hybrid_settings_field_id( 'skyfall_favicon' ) ); ?>"><?php _e( 'Favicon:', 'skyfall' ); ?></label>
+			</th>
+			<td>
+				<input type="text" id="<?php echo esc_attr( hybrid_settings_field_id( 'skyfall_favicon' ) ); ?>" name="<?php echo esc_attr( hybrid_settings_field_name( 'skyfall_favicon' ) ); ?>" value="<?php echo esc_url( hybrid_get_setting( 'skyfall_favicon' ) ); ?>" />
+				<input id="skyfall_favicon_upload_button" class="button" type="button" value="<?php esc_attr_e( 'Upload', 'skyfall' ) ?>" />
+				<br />
+				<span class="description"><?php _e( 'Upload a favicon for your website, or specify the image address of your online favicon.', 'skyfall' ); ?></span>
+				
+				<?php
+				if ( hybrid_get_setting( 'skyfall_favicon' ) ) { ?>
+                    <p><img src="<?php echo esc_url( hybrid_get_setting( 'skyfall_favicon' ) ); ?>" /></p>
+				<?php } ?>
+			</td>
+		</tr>
+
 	</table><!-- .form-table -->
 
 	<?php
@@ -115,10 +133,10 @@ function skyfall_settings_home_text() {
  */
 function skyfall_theme_validate_settings( $input ) {
     
-    /* Sanitize sticky post slider */
 	$input['skyfall_sticky'] = ( isset( $input['skyfall_sticky'] ) ? 1 : 0 );
 
-	/* Sanitize home text. */
+	$input['skyfall_favicon'] = esc_url_raw( $input['skyfall_favicon'] );
+
 	if ( isset( $input['skyfall_home_text'] ) && !current_user_can( 'unfiltered_html' ) )
 		$input['skyfall_home_text'] = stripslashes( wp_filter_post_kses( addslashes( $input['skyfall_home_text'] ) ) );
 
@@ -132,6 +150,13 @@ function skyfall_theme_validate_settings( $input ) {
  * @since 1.0
  */
 function skyfall_admin_scripts( $hook_suffix ) {
+
+	/* Enqueue Scripts */
+	wp_enqueue_script( 'skyfall-theme-settings-script', trailingslashit ( THEME_URI ) . 'admin/admin.js', array( 'jquery', 'media-upload', 'thickbox' ), '1.0', false );
+
+	/* Localize script strings */
+	wp_localize_script( 'skyfall-theme-settings-script', 'js_text', array( 'insert_into_post' => __( 'Use this Image', 'skyfall' ) ) );
+
 	/* Enqueue Styles */
 	wp_enqueue_style( 'skyfall-theme-settings-style', trailingslashit ( THEME_URI ) . 'admin/admin.css', false, 1.0, 'screen' );
 }

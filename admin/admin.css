@@ -2,6 +2,13 @@
 Description: Custom CSS for theme settings.
 Version: 1.0
 */
+#skyfall_theme_settings-sabak_favicon { 
+    width: 75%; 
+}
+
+.favicon_url p { 
+    max-width: 32px;
+}
 
 .hybrid-core-settings-wrap .inside span.description {
     font-style: normal;

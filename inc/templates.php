@@ -11,6 +11,17 @@
  */
 
 /**
+ * Display favicon
+ *
+ * @since 1.0
+ */
+function skyfall_display_favicon() {
+	if( hybrid_get_setting( 'skyfall_favicon' ) )
+		echo '<link rel="shortcut icon" type="image/x-icon" href="' . esc_url( hybrid_get_setting( 'skyfall_favicon' ) ) . '">' . "\n";
+}
+add_action( 'wp_head', 'skyfall_display_favicon', 10 );
+
+/**
  * Display sidebar on header
  *
  * @since 1.0
