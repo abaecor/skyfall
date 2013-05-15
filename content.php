@@ -49,7 +49,7 @@ do_action( 'skyfall_entry_before' );
 						else
 							$size = 'skyfall-blog';
 					?>
-					<?php if( !empty( $image ) ) { ?>
+					<?php if( !empty( $image['src'] ) ) { ?>
 						<a href="<?php echo $image['src']; ?>" class="overlay" rel="prettyPhoto">
 							<?php if ( current_theme_supports( 'get-the-image' ) ) get_the_image( array( 'meta_key' => 'Thumbnail', 'size' => $size, 'image_class' => 'photo', 'link_to_post' => false ) ); ?>
 						</a>
