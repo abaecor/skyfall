@@ -1418,7 +1418,7 @@ object {
   margin-bottom: 28px;
 }
 
-.camera_caption .entry-title {
+.home.layout-1c-full .camera_caption .entry-title {
   font-size: 16px;
   font-size: 1.33333rem;
   line-height: 2.25em;
@@ -1428,10 +1428,10 @@ object {
   text-align: left;
   padding: 0;
 }
-.camera_caption .entry-title a {
+.home.layout-1c-full .camera_caption .entry-title a {
   color: white;
 }
-.camera_caption p {
+.home.layout-1c-full .camera_caption p {
   margin-bottom: 0;
 }
 
