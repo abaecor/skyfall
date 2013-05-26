@@ -116,9 +116,6 @@ function skyfall_theme_setup() {
 	/* Filter size of the gravatar on comments. */
 	add_filter( "{$prefix}_list_comments_args", 'skyfall_comments_args' );
 
-	/* Remove theme-layouts meta box from custom post type. */
-	add_action( 'init', 'skyfall_remove_theme_layout_metabox', 11 );
-
 	/* Register custom sidebar. */
 	add_action( 'widgets_init', 'skyfall_register_custom_sidebars' );
 
@@ -308,15 +305,6 @@ function skyfall_remove_recent_comments_style() {
 function skyfall_comments_args( $args ) {
 	$args['avatar_size'] = 60;
 	return $args;
-}
-
-/**
- * Remove theme-layouts meta box
- * 
- * @since 1.0
- */
-function skyfall_remove_theme_layout_metabox() {
-	remove_post_type_support( 'portfolio_item', 'theme-layouts' ); // custom content portfolio plugin
 }
 
 /**

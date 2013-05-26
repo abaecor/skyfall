@@ -40,8 +40,8 @@ get_header();
 				<?php while ( have_posts() ) : the_post(); ?>
 
 					<?php 
-						// Loads the content-__.php (where ___ is the post format or post type name)
-						get_template_part( 'content', ( post_type_supports( get_post_type(), 'post-formats' ) ? get_post_format() : get_post_type() ) );
+						// Loads the content-__.php
+						get_template_part( 'content', get_post_type() );
 					?>
 
 					<?php if ( is_singular() ) { ?>

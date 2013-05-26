@@ -955,6 +955,17 @@ object {
   display: inline;
   float: right;
 }
+.sidebar-header a,
+.sidebar-header .widget-title {
+  color: white;
+}
+.sidebar-header .widget-search {
+  padding-top: 20px;
+}
+.sidebar-header .widget-search input[type="text"] {
+  border: 1px solid #2F8CC9;
+  width: 15em;
+}
 
 /*------------------------------------*\
 	$NAVIGATIONS
@@ -1059,6 +1070,18 @@ object {
 }
 .sidebar-primary .widget-title {
   margin-bottom: 10px;
+}
+
+.widget-search .widget-title,
+.widget-search label,
+.widget-search .button {
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
+  position: absolute !important;
+}
+.widget-search input[type="text"] {
+  height: 3em;
+  width: 100%;
 }
 
 /*------------------------------------*\
@@ -1215,24 +1238,24 @@ object {
 /*------------------------------------*\
 	$HOMEPAGE
 \*------------------------------------*/
-.home .no-sidebar {
+.home.layout-1c-full .no-sidebar {
   margin-bottom: 36px;
 }
-.home .hentry {
+.home.layout-1c-full .hentry {
   width: 31.91489%;
   float: left;
   margin-right: 2.12766%;
   display: inline;
   margin-bottom: 18px;
 }
-.home .hentry:nth-child(3n) {
+.home.layout-1c-full .hentry:nth-child(3n) {
   float: right;
   margin-right: 0;
 }
-.home figure a, .home figure img {
+.home.layout-1c-full figure a, .home.layout-1c-full figure img {
   display: block;
 }
-.home .entry-title {
+.home.layout-1c-full .entry-title {
   font-size: 20px;
   font-size: 1.66667rem;
   font-weight: 400;
@@ -1240,7 +1263,7 @@ object {
   text-align: center;
   padding: 16px;
 }
-.home .entry-title a {
+.home.layout-1c-full .entry-title a {
   color: #333333;
 }
 

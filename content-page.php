@@ -21,13 +21,21 @@ do_action( 'skyfall_entry_before' );
 		?>
 
 		<figure class="hmedia">
-			<?php 
-				if ( current_theme_supports( 'get-the-image' ) ) 
-				$image = get_the_image( array( 'meta_key' => 'Thumbnail', 'size' => 'full', 'format' => 'array' ) ); 
+			<?php
+				$image = get_the_image( array( 'meta_key' => 'Thumbnail', 'size' => 'full', 'format' => 'array' ) );
+				
+				$layout = theme_layouts_get_layout();
+				$size = '';
+				if( 'layout-1c-full' == $layout )
+					$size = 'skyfall-blog-full';
+				else
+					$size = 'skyfall-blog';
 			?>
-			<a href="<?php echo $image['src']; ?>" class="overlay" rel="prettyPhoto">
-				<?php if ( current_theme_supports( 'get-the-image' ) ) get_the_image( array( 'meta_key' => 'Thumbnail', 'size' => 'skyfall-blog', 'image_class' => 'photo', 'link_to_post' => false ) ); ?>
-			</a>
+			<?php if( !empty( $image['src'] ) ) { ?>
+				<a href="<?php echo $image['src']; ?>" class="overlay" rel="prettyPhoto">
+					<?php if ( current_theme_supports( 'get-the-image' ) ) get_the_image( array( 'meta_key' => 'Thumbnail', 'size' => $size, 'image_class' => 'photo', 'link_to_post' => false ) ); ?>
+				</a>
+			<?php } ?>
 		</figure>
 
 		<div class="entry">
